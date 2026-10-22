@@ -129,6 +129,12 @@ export function evaluate(pages, context = {}) {
           hops: page.redirects.length,
         }),
       );
+      const targetFetched = pages.some(
+        (other) =>
+          other !== page &&
+          normalizeUrl(other.url) === normalizeUrl(page.finalUrl ?? page.url),
+      );
+      if (targetFetched) continue;
     }
 
     const metaRobots = String(doc.metaRobots ?? "");
@@ -267,7 +273,12 @@ export function evaluate(pages, context = {}) {
       }
     }
 
-    if (!metaNoindex && !headerNoindex && (!doc.canonical || isSameAsPage(doc.canonical, page))) {
+    if (
+      !page.redirects?.length &&
+      !metaNoindex &&
+      !headerNoindex &&
+      (!doc.canonical || isSameAsPage(doc.canonical, page))
+    ) {
       indexable.push(page);
     }
 

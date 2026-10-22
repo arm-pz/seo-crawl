@@ -278,6 +278,29 @@ test("ignores internal links disallowed by robots instead of marking them unveri
   assert.equal(result.findings.length, 0);
 });
 
+test("does not double-report content for a redirect alias whose target was crawled", () => {
+  const alias = "https://example.com/old";
+  const target = "https://example.com/new";
+  const html = `<html lang="en"><head>
+    <title>A shared descriptive title page</title>
+    <meta name="description" content="A useful description of this page for search results.">
+    <link rel="canonical" href="${target}">
+  </head><body><h1>A</h1><h1>B</h1></body></html>`;
+  const aliasPage = makePage(alias, html, {
+    finalUrl: target,
+    redirects: [{ from: alias, to: target, status: 301 }],
+  });
+  const targetPage = makePage(target, html);
+
+  const result = evaluate([aliasPage, targetPage], context({ sitemapUrls: [target] }));
+  const found = rules(result.findings);
+
+  assert.equal(found.filter((rule) => rule === "h1-multiple").length, 1);
+  assert.equal(found.includes("duplicate-title"), false);
+  assert.equal(found.includes("not-in-sitemap"), false);
+  assert.equal(result.findings.find((finding) => finding.rule === "redirect").url, alias);
+});
+
 test("flags a failing start URL and never emits duplicate finding ids", () => {
   const url = "https://example.com/page";
   const failed = makePage(url, null, {
