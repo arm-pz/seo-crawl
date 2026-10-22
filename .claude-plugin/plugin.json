@@ -1,0 +1,10 @@
+{
+  "name": "seo-crawl",
+  "version": "0.1.0",
+  "description": "Crawls a site you own and returns deterministic, evidence-backed technical SEO findings on status, indexability, canonicals, titles, metas, H1s, internal links, sitemap coverage and static structured data. Read-only; unassessable checks are reported INCONCLUSIVE.",
+  "author": {
+    "name": "Abdul Rahman P Z"
+  },
+  "homepage": "https://skills.caffeinity.com/seo-crawl/",
+  "repository": "https://github.com/arm-pz/seo-crawl"
+}
