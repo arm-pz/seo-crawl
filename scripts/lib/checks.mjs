@@ -421,7 +421,11 @@ export function evaluate(pages, context = {}) {
   checks.push({
     id: "crawl-coverage",
     status: context.crawlTruncated ? "inconclusive" : "complete",
-    detail: context.crawlTruncated ? "crawl stopped at the page limit" : "crawl reached every queued page",
+    detail: context.crawlTruncated
+      ? context.crawlTruncationReason === "depth"
+        ? "crawl stopped at the depth limit"
+        : "crawl stopped at the page limit"
+      : "crawl reached every queued page",
   });
 
   return { findings, checks };
