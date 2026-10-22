@@ -1,0 +1,17 @@
+{
+  "name": "seo-crawl",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic, read-only technical SEO crawler skill",
+  "license": "MIT",
+  "bin": {
+    "seo-crawl": "scripts/seo-crawl.mjs"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
