@@ -68,7 +68,7 @@ A code change alone never proves a fix. Re-run the crawler and compare by findin
 - **`web-preflight`** — release security: exposed secrets, source files, admin and debug surfaces.
 - **`wordsmith`** — rewrites of titles, meta descriptions, and page copy after findings are approved.
 
-The `caffeinity-routing` W4 organic-growth workflow coordinates these when the user is preparing a site to ship.
+Brew 4 · Cold brew, the organic-growth workflow in `caffeinity-routing`, coordinates these when the user is preparing a site to ship.
 
 ## Limits
 
