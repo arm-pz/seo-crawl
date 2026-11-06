@@ -1,6 +1,7 @@
 ---
 name: seo-crawl
 description: Use when you need evidence about the technical SEO state of a site you own or are authorized to crawl, covering HTTP statuses and redirects, indexability (meta and header robots), robots.txt, canonical tags, titles, meta descriptions, H1s, internal links, sitemap coverage, and static JSON-LD. Runs a bounded, read-only crawl and returns deterministic findings JSON with stable IDs and explicit INCONCLUSIVE checks, so an SEO audit or content change starts from measured evidence instead of guesses. Trigger phrases include "crawl the site for SEO", "check sitemap coverage", "find broken internal links", "why is this page not indexed", "check titles and metas", "canonical audit", and "pre-audit crawl". Not for Search Console clicks, impressions, rankings or keyword volumes; Core Web Vitals, Lighthouse or bundle performance; release security and exposed files; content rewriting or keyword strategy.
+version: 1.0.0
 ---
 
 # Seo Crawl
